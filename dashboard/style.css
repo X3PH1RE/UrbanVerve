@@ -11,6 +11,7 @@ body {
 }
 .time-container{
     width: 98vw;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,6 +34,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 1vh;
+    height: 10vh;
 }
 h4{
     font-size: 3rem;
@@ -43,8 +46,9 @@ h4{
 #traffic{
     height: 60vh;
     width: 98vw;
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(4, 24vw);
+    justify-content: space-between;
 }
 #traffic h5{
     padding: 0px;
@@ -53,6 +57,7 @@ h4{
 .traffic-box{
     width: 24vw;
     border-radius: 1vh;
+    background-color: #e0dfdf;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
     display: flex;
     flex-direction: column;
@@ -75,8 +80,101 @@ h4{
     align-items: center;
 }
 .light{
-    background-color: black;
+    background-color: #101010;
     width: 5vw;
     height: 5vw;
     border-radius: 2.5vw;
+}
+
+
+@media screen and (max-width: 1000px) {
+    body{
+        height: 150vh;
+    }
+    #traffic {
+        height: 100vh;
+        width: 98vw;
+        display: grid;
+        grid-template-columns: repeat(2, 48vw);
+        grid-template-rows: repeat(2, 49vh);
+        align-content: space-around;
+    }
+    .traffic-box {
+        width: 44vw;
+        padding: 1vh;
+        margin: 1vh;
+    }
+    .traffic-info {
+        width: 40vw;
+    }
+    .traffic-light {
+        width: 40vw;
+    }
+    .light {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 5vw;
+    }
+}
+@media screen and (max-width: 750px) {
+    body{
+        height: 250vh;
+    }
+    #traffic {
+        height: 200vh;
+        width: 90vw;
+        display: grid;
+        grid-template-columns: 65vw;
+        grid-template-rows: repeat(4, 49vh);
+        justify-content: center;
+    }
+    .traffic-box {
+        width: 60vw;
+        padding: none;
+        margin: none;
+    }
+    .traffic-info {
+        width: 40vw;
+    }
+    .traffic-light {
+        width: 40vw;
+    }
+    .light {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 5vw;
+    }
+}
+@media screen and (max-width: 550px) {
+    body{
+        height: 250vh;
+    }
+    .time-container{
+        width: 90vw;
+    }
+    #traffic {
+        height: 200vh;
+        width: 80vw;
+        display: grid;
+        grid-template-columns: 75vw;
+        grid-template-rows: repeat(4, 49vh);
+        justify-content: center;
+    }
+    .traffic-box {
+        width: 70vw;
+        
+        padding: none;
+        margin: none;
+    }
+    .traffic-info {
+        width: 40vw;
+    }
+    .traffic-light {
+        width: 40vw;
+    }
+    .light {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 5vw;
+    }
 }
