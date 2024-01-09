@@ -36,7 +36,6 @@ while True:
     dilatada = cv2.morphologyEx(dilatada, cv2.MORPH_CLOSE, kernel)
     countershape, h = cv2.findContours(dilatada, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-    cv2.line(video, (500,count_line_position),(5000,count_line_position),(0,255,0), 3)
 
     for (i, c) in enumerate(countershape):
         (x,y,w,h) = cv2.boundingRect(c)
