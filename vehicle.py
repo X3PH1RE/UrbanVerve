@@ -2,7 +2,7 @@ import cv2
 import numpy as np 
 
 #Web camera
-cap = cv2.VideoCapture('traffic.mp4')
+cap = cv2.VideoCapture('video.mp4')
 
 #initialize Subtractor
 algo = cv2.createBackgroundSubtractorMOG2()
