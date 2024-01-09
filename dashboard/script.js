@@ -2,15 +2,15 @@ let [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
 let timeref = document.querySelector(".time-display h3");
 let int = null;
 let north = east = west = south = 0;
-let nNum, sNum, eNum, wNum = 0;
+let nNum = sNum = eNum = wNum = 0;
 let nRage, sRage, eRage, wRage = 200;
+
 
 
 // Timer Start Button
 document.getElementById("start-btn").addEventListener("click", () => {
     if(int !== null){clearInterval(int);}
     let init = random04();
-    console.log(init);
     if(init == 2){north=0, east=2, south=0, west=0;}
     else if(init == 3){north=0, east=0, south=2, west=0;}
     else if(init == 4){north=0, east=0, south=0, west=2;}
@@ -41,6 +41,9 @@ function Simulate(){
     if(milliseconds == 1000){
         milliseconds = 0;
         seconds++;
+        if(seconds%1==0){
+            addVehicle(nNum);
+        }
         if(seconds == 60){
             seconds = 0;
             minutes++;
@@ -55,10 +58,38 @@ function Simulate(){
     timeref.innerHTML = `${h} : ${m} : ${s} : ${ms}`;
 }
 
-//Random Number generator from 1 to 4
+//Random Number generator from 0 to 4
 function random04() {return Math.floor(Math.random() * 5);}
 //Random Number generator from 6 to 10
 function random610() {return Math.floor(Math.random() * (10 - 6 + 1)) + 6;}
+
+//Vehicle Count
+function updateField(){}
+
+function addVehicle(side){
+    console.log(side);
+    return side + random04();
+}
+
+
+
+
+//check Status
+function checkGreen(){
+
+}
+function checkRed(){
+    
+}
+
+//Start Rage
+function rage(){
+    if(init == 2){north=0, east=2, south=0, west=0;}
+    else if(init == 3){north=0, east=0, south=2, west=0;}
+    else if(init == 4){north=0, east=0, south=0, west=2;}
+    else{north=2, east=0, south=0, west=0;}
+}
+
 
 //reset all lights to yellow
 function resetLights() {
