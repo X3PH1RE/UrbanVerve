@@ -7,6 +7,7 @@ let north = east = west = south = 0;
 let nNum = sNum = eNum = wNum = 0;
 let nRage = sRage = eRage = wRage = 0;
 let nTime = sTime = eTime = wTime = 0;
+let nRad = document.getElementById('nEmergency'), sRad = document.getElementById('sEmergency'), eRad = document.getElementById('eEmergency'), wRad =document.getElementById('wEmergency');
 
 
 
@@ -87,6 +88,7 @@ function Simulate(){
             console.log(nNum, eNum, wNum, sNum);}
 
         if(seconds%5==0){
+            checkEm();
             if((north==2 && nNum==0)||(south==2 && sNum==0)||(west==2 && wNum==0)||(east==2 && eNum==0)){
                 init=nextCycle();
             }
@@ -114,6 +116,7 @@ function random15() {return Math.floor(Math.random()*5)+1;}
 //Random Number generator from 10 to 20
 function random12() {return Math.floor(Math.random()*(11)+10);}
 
+
 //Vehicle Count
 function addVehicle(side){
     return side + random04();
@@ -122,6 +125,26 @@ function removeVehicle(side){
     side = side - random15();
     if(side<0){side = 0;}
     return side;
+}
+
+//check emergency Function
+function checkEm(){
+    console.log("@@@@@@@@@@@@@@@@");
+    if(nRad.checked==true){
+        south = 2;
+        north = east = west = 0;}
+        else if(eRad.checked==true){
+        north = 2;
+        south = east = west = 0;}
+        else if(wRad.checked==true){
+        east = 2;
+        south = north = west = 0;}
+        else if(sRad.checked==true){
+        west = 2;
+        south = east = north = 0;}
+    console.log(init);
+    console.log("Light Status:", north, east, west, south);
+    init=nextCycle();
 }
 
 //AssignTime
@@ -238,32 +261,34 @@ function updateField(){
     document.getElementById('eTime').innerHTML = `Time: ${eTime}`;    
     document.getElementById('wTime').innerHTML = `Time: ${wTime}`;
     document.getElementById('sTime').innerHTML = `Time: ${sTime}`;
-
-    //nEm.checked = true; 
 }
 
 //Next Cycle
 function nextCycle(){
     console.log(init);
     if(east==2){
+        eRad.checked = false;
         east = west = 1;
         eRage = wRage = eTime = wTime = 0;
         setLight();
         wTime=checkTime(wNum);
         north=0, east=0, south=0, west=2;}
     else if(south == 2){
+        sRad.checked = false;
         north= south = 1;
         nRage = sRage= nTime = sTime = 0;
         setLight();
         nTime=checkTime(nNum);
         north=2, east=0, south=0, west=0;}
     else if(west == 2){
+        wRad.checked = false;
         west = south = 1;
         sRage = wRage = sTime = wTime = 0;
         setLight();
         sTime=checkTime(sNum);
         north=0, east=0, south=2, west=0;}
     else{
+        nRad.checked = false;
         north = east = 1;
         nRage = eRage = nTime = eTime = 0;
         setLight();
